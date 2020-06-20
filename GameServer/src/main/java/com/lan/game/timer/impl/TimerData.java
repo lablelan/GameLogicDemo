@@ -6,9 +6,9 @@ package com.lan.game.timer.impl;
 public class TimerData {
     String id = "";
     long lastTick = 0;
-    boolean isFast = false;
-    TimerType type = TimerType.INVALID;
-    long arg = 0;
+//    boolean isFast = false;
+//    TimerType type = TimerType.INVALID;
+//    long arg = 0;
 
     public String getId() {
         return id;
@@ -26,35 +26,35 @@ public class TimerData {
         this.lastTick = lastTick;
     }
 
-    public boolean isFast() {
-        return isFast;
-    }
+//    public boolean isFast() {
+//        return isFast;
+//    }
+//
+//    public void setFast(boolean fast) {
+//        isFast = fast;
+//    }
+//
+//    public TimerType getType() {
+//        return type;
+//    }
+//
+//    public void setType(TimerType type) {
+//        this.type = type;
+//    }
+//
+//    public long getArg() {
+//        return arg;
+//    }
+//
+//    public void setArg(long arg) {
+//        this.arg = arg;
+//    }
 
-    public void setFast(boolean fast) {
-        isFast = fast;
-    }
-
-    public TimerType getType() {
-        return type;
-    }
-
-    public void setType(TimerType type) {
-        this.type = type;
-    }
-
-    public long getArg() {
-        return arg;
-    }
-
-    public void setArg(long arg) {
-        this.arg = arg;
-    }
-
-    public TimerData(String id, long lastTick, boolean isFast, TimerType type, long arg) {
+    public TimerData(String id, long lastTick) {
         this.id = id;
         this.lastTick = lastTick;
-        this.isFast = isFast;
-        this.type = type;
-        this.arg = arg;
+//        this.isFast = isFast;
+//        this.type = type;
+//        this.arg = arg;
     }
 }

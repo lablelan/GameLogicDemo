@@ -17,7 +17,8 @@ public class TimerTest extends TestCase {
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
         PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime(),false, TimerType.TIMEOUT, 10000),d.getTime());
+                new TimerData("test", d.getTime()),
+                new TimerArgs(false, TimerType.TIMEOUT,10000, d.getTime()));
         t.setTimeOut(playerTimerCfg);
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         assertEquals(p.getName(), "");
@@ -37,7 +38,8 @@ public class TimerTest extends TestCase {
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
         PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime(),false, TimerType.HOUR_INTERVAL, 1),d.getTime());
+                new TimerData("test", d.getTime()),
+                new TimerArgs(false, TimerType.HOUR_INTERVAL,1, d.getTime()));
         t.startInterval(playerTimerCfg);
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         assertEquals(p.getName(), "");
@@ -72,7 +74,8 @@ public class TimerTest extends TestCase {
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
         PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime(),false, TimerType.HOUR_INTERVAL, 1),d.getTime());
+                new TimerData("test", d.getTime()),
+                new TimerArgs(false, TimerType.HOUR_INTERVAL,1, d.getTime()));
         t.startInterval(playerTimerCfg);
         // 清除定时器
         assertEquals(t.getTimerNameMapToCfg().size(), 1);

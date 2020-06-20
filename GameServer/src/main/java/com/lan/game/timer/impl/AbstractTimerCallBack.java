@@ -11,6 +11,10 @@ public abstract class AbstractTimerCallBack implements ITimerCallBack {
     private long nextTick = 0;
     private ITimerTarget target = null; // 和timer关联的对象，供callback使用
     private TimerData timerData = null;
+    TimerArgs args = null;
+//    private boolean isFast = false;
+//    TimerType type = TimerType.INVALID;
+//    long arg = 0;
 
     public ITimerTarget getTarget() {
         return target;
@@ -38,10 +42,11 @@ public abstract class AbstractTimerCallBack implements ITimerCallBack {
      * 根据数据构建timer
      * @param data 定时器相关的数据
      */
-    public AbstractTimerCallBack(ITimerTarget target, TimerData data, long nowTs) {
+    public AbstractTimerCallBack(ITimerTarget target, TimerData data, TimerArgs args) {
         this.timerData = data;
         this.target = target;
-        tryRefreshTimer(nowTs);
+        this.args = args;
+        tryRefreshTimer(this.args.getNowTs());
     }
 
     /**
@@ -59,7 +64,7 @@ public abstract class AbstractTimerCallBack implements ITimerCallBack {
         while (nowTs >= this.nextTick) {
             // 初始化时会尝试刷新一次nextTick 但不调用callback
             if (this.nextTick != 0) {
-                if (!isFast && !this.getTimerData().isFast()) {
+                if (!isFast && !this.args.isFast()) {
                     isFast = true;
                     this.callback(nowTs);
                 }
@@ -77,22 +82,22 @@ public abstract class AbstractTimerCallBack implements ITimerCallBack {
         if (this.nextTick > nowTs) {
             return;
         }
-        switch (this.getTimerData().getType()) {
+        switch (this.args.getType()) {
             case TIMEOUT:
                 if (this.nextTick != 0) {
                     this.needRemove = true;
                 }
-                this.nextTick = this.getTimerData().getLastTick() + this.getTimerData().getArg();
+                this.nextTick = this.getTimerData().getLastTick() + this.args.getArg();
                 return;
             case SEC_INTERVAL:
-                this.nextTick = this.getTimerData().getLastTick() + this.getTimerData().getArg() * GSConst.SEC;
+                this.nextTick = this.getTimerData().getLastTick() + this.args.getArg() * GSConst.SEC;
             case MIN_INTERVAL:
-                this.nextTick = this.getTimerData().getLastTick() + this.getTimerData().getArg() * GSConst.MIN;
+                this.nextTick = this.getTimerData().getLastTick() + this.args.getArg() * GSConst.MIN;
             case HOUR_INTERVAL:
-                this.nextTick = this.getTimerData().getLastTick() + this.getTimerData().getArg() * GSConst.HOUR;
+                this.nextTick = this.getTimerData().getLastTick() + this.args.getArg() * GSConst.HOUR;
                 return;
             case DAY_INTERVAL:
-                this.nextTick = this.getTimerData().getLastTick() + this.getTimerData().getArg() * GSConst.DAY;
+                this.nextTick = this.getTimerData().getLastTick() + this.args.getArg() * GSConst.DAY;
                 return;
             default:
                 return;

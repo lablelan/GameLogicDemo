@@ -8,8 +8,16 @@ import com.lan.game.timer.ITimerTarget;
  */
 public class PlayerTimerCallBack extends AbstractTimerCallBack {
 
-    public PlayerTimerCallBack(ITimerTarget target, TimerData data, long nowTs) {
-        super(target, data, nowTs);
+
+    /**
+     * 根据数据构建timer
+     *
+     * @param target
+     * @param data   定时器相关的数据
+     * @param args
+     */
+    public PlayerTimerCallBack(ITimerTarget target, TimerData data, TimerArgs args) {
+        super(target, data, args);
     }
 
     public void callback(long nowTs) {
