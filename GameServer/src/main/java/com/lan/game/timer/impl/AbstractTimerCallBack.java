@@ -8,13 +8,10 @@ import com.lan.game.util.GSConst;
  * 定时器抽象类
  */
 public abstract class AbstractTimerCallBack implements ITimerCallBack {
-    private long nextTick = 0;
-    private ITimerTarget target = null; // 和timer关联的对象，供callback使用
-    private TimerData timerData = null;
-    TimerArgs args = null;
-//    private boolean isFast = false;
-//    TimerType type = TimerType.INVALID;
-//    long arg = 0;
+    private long nextTick = 0;          // 动态计算的下次执行时间戳
+    private ITimerTarget target = null; // timer关联的对象，供callback使用
+    private TimerData timerData = null; // timer相关用来恢复定时器的数据
+    TimerArgs args = null;              // timer相关的自定义参数
 
     public ITimerTarget getTarget() {
         return target;
@@ -36,7 +33,7 @@ public abstract class AbstractTimerCallBack implements ITimerCallBack {
         return needRemove;
     }
 
-    private boolean needRemove = false; // 是否需要移除
+    private boolean needRemove = false; // 执行完是否需要移除
 
     /**
      * 根据数据构建timer

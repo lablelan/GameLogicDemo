@@ -40,8 +40,8 @@ public class TimerArgs {
         this.nowTs = nowTs;
     }
 
-    boolean isFast = false;
-    TimerType type = TimerType.INVALID;
-    long arg = 0;
-    long nowTs = 0;
+    boolean isFast = false;             // 是否只调用一次
+    TimerType type = TimerType.INVALID; // timer类型
+    long arg = 0;                       // timer类型对应的辅助参数 如setTimeOut为n毫秒 startInterval为n个单位时间
+    long nowTs = 0;                     // 注册timer时的当前时间
 }
