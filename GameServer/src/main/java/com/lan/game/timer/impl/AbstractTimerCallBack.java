@@ -1,13 +1,13 @@
 package com.lan.game.timer.impl;
 
-import com.lan.game.timer.ITimerCfg;
+import com.lan.game.timer.ITimerCallBack;
 import com.lan.game.timer.ITimerTarget;
 import com.lan.game.util.GSConst;
 
 /**
  * 定时器抽象类
  */
-public abstract class AbstractTimerCallBack implements ITimerCfg {
+public abstract class AbstractTimerCallBack implements ITimerCallBack {
     private long nextTick = 0;
     private ITimerTarget target = null; // 和timer关联的对象，供callback使用
     private TimerData timerData = null;
