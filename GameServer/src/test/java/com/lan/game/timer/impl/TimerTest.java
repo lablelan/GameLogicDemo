@@ -51,18 +51,24 @@ public class TimerTest extends TestCase {
         assertEquals(p.getName(), "xiaoming");
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         // 一个半小时过去
+        p.setName("");
         p.tick(d.getTime() + GSConst.MIN * 90);
+        assertEquals(p.getName(), "");
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         // 到第二个小时
         p.tick(d.getTime() + GSConst.HOUR * 2);
+        assertEquals(p.getName(), "xiaoming");
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         // 回退时间无法触发
+        p.setName("");
         p.tick(d.getTime() + GSConst.MIN * 78);
+        assertEquals(p.getName(), "");
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         p.tick(d.getTime() + GSConst.HOUR * 2);
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         // 第三个小时过去
         p.tick(d.getTime() + GSConst.HOUR * 3);
+        assertEquals(p.getName(), "xiaoming");
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
     }
 
