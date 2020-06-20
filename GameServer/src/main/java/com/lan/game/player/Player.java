@@ -30,7 +30,6 @@ public class Player implements ITimerTarget {
     }
 
     public void sayHi() {
-        this.name = "xiaoming";
         System.out.println("hi, world!");
     }
 }

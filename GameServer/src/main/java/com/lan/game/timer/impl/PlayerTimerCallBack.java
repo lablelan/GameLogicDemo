@@ -22,6 +22,7 @@ public class PlayerTimerCallBack extends AbstractTimerCallBack {
 
     public void callback(long nowTs) {
         Player p = (Player)this.getTarget();
+        p.setName("xiaoming");
         p.sayHi();
     }
 }
