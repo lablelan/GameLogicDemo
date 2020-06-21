@@ -3,9 +3,17 @@ import com.lan.game.timer.ITimerTarget;
 import com.lan.game.timer.impl.Timer;
 
 
+/**
+ * @author lanbei
+ * 玩家类
+ */
 public class Player implements ITimerTarget {
-    String name = "";
-    private Timer timer = null;
+    String name;
+    private Timer timer;
+
+    public Player() {
+        name = "";
+    }
 
     public String getName() {
         return name;

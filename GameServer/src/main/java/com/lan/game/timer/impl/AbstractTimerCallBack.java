@@ -5,13 +5,26 @@ import com.lan.game.timer.ITimerTarget;
 import com.lan.game.util.GSConst;
 
 /**
+ * @author lanbei
  * 定时器抽象类
  */
 public abstract class AbstractTimerCallBack implements ITimerCallBack {
-    private long nextTick = 0;          // 动态计算的下次执行时间戳
-    private ITimerTarget target = null; // timer关联的对象，供callback使用
-    private TimerData timerData = null; // timer相关用来恢复定时器的数据
-    TimerArgs args = null;              // timer相关的自定义参数
+    /**
+     * 动态计算的下次执行时间戳
+     */
+    private long nextTick;
+    /**
+     * timer关联的对象，供callback使用
+     */
+    private ITimerTarget target;
+    /**
+     * timer相关用来恢复定时器的数据
+     */
+    private TimerData timerData;
+    /**
+     * timer相关的自定义参数
+     */
+    TimerArgs args;
 
     public ITimerTarget getTarget() {
         return target;

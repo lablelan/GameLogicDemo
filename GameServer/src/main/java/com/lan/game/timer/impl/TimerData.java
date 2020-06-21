@@ -1,11 +1,18 @@
 package com.lan.game.timer.impl;
 
 /**
+ * @author lanbei
  * 定时器相关数据 保存数据库用于恢复定时器
  */
 public class TimerData {
-    String id = "";     // timer的唯一id
-    long lastTick = 0;  // timer最后执行的时间戳
+    /**
+     * timer的唯一id
+     */
+    String id;
+    /**
+     * timer最后执行的时间戳
+     */
+    long lastTick;
 
     public String getId() {
         return id;

@@ -3,15 +3,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * @author lanbei
+ * 定时器类
+ */
 public class Timer {
-    // 存放当前的所有需要调用的timer
-    HashMap<String, AbstractTimerCallBack> timerNameMapToCfg;
+    /**
+     * 存放当前的所有需要调用的timer
+     */
+    Map<String, AbstractTimerCallBack> timerNameMapToCfg;
 
     Timer() {
         timerNameMapToCfg = new HashMap<String, AbstractTimerCallBack>();
     }
 
-    public HashMap<String, AbstractTimerCallBack> getTimerNameMapToCfg() {
+    public Map<String, AbstractTimerCallBack> getTimerNameMapToCfg() {
         return timerNameMapToCfg;
     }
 
