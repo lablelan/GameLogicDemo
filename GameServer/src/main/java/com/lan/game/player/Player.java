@@ -1,4 +1,6 @@
 package com.lan.game.player;
+import com.lan.game.activity.IActivityTarget;
+import com.lan.game.activity.impl.ActivityManager;
 import com.lan.game.timer.ITimerTarget;
 import com.lan.game.timer.impl.Timer;
 
@@ -7,12 +9,22 @@ import com.lan.game.timer.impl.Timer;
  * @author lanbei
  * 玩家类
  */
-public class Player implements ITimerTarget {
+public class Player implements ITimerTarget, IActivityTarget {
     String name;
     private Timer timer;
 
+    private ActivityManager activityManager;
+
     public Player() {
         name = "";
+    }
+
+    public ActivityManager getActivityManager() {
+        return activityManager;
+    }
+
+    public void setActivityManager(ActivityManager activityManager) {
+        this.activityManager = activityManager;
     }
 
     public String getName() {

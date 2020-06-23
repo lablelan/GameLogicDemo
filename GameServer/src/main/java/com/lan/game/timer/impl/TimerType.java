@@ -31,7 +31,7 @@ public enum TimerType {
     DAY_INTERVAL(5);
 
     private int value;
-    private TimerType(int value) {
+    TimerType(int value) {
         this.value = value;
     }
     public TimerType valueOf(int value) {

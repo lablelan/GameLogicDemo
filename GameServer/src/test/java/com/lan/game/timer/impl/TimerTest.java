@@ -13,13 +13,13 @@ public class TimerTest extends TestCase {
         Timer t = new Timer();
         Player p = new Player();
         p.setTimer(t);
+        t.setTarget(p);
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
-        PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime()),
-                new TimerArgs(false, TimerType.TIMEOUT,10000, d.getTime()));
-        t.setTimeOut(playerTimerCfg);
+        TimerArgs args = new TimerArgs("test",TimerType.TIMEOUT, d.getTime(), 10000, new PlayerTimerCallBack());
+        args.setLastTick(d.getTime());
+        t.setTimeOut(args);
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         assertEquals(p.getName(), "");
         p.tick(d.getTime() + 9999);
@@ -34,13 +34,13 @@ public class TimerTest extends TestCase {
         Timer t = new Timer();
         Player p = new Player();
         p.setTimer(t);
+        t.setTarget(p);
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
-        PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime()),
-                new TimerArgs(false, TimerType.HOUR_INTERVAL,1, d.getTime()));
-        t.startInterval(playerTimerCfg);
+        TimerArgs args = new TimerArgs("test", TimerType.HOUR_INTERVAL, d.getTime(), 1, new PlayerTimerCallBack());
+        args.setLastTick(d.getTime());
+        t.startInterval(args);
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         assertEquals(p.getName(), "");
         p.tick(d.getTime() + GSConst.HOUR * 0);
@@ -76,13 +76,13 @@ public class TimerTest extends TestCase {
         Timer t = new Timer();
         Player p = new Player();
         p.setTimer(t);
+        t.setTarget(p);
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, 0,1, 0,0,0);
         Date d = calendar.getTime();
-        PlayerTimerCallBack playerTimerCfg = new PlayerTimerCallBack(p,
-                new TimerData("test", d.getTime()),
-                new TimerArgs(false, TimerType.HOUR_INTERVAL,1, d.getTime()));
-        t.startInterval(playerTimerCfg);
+        TimerArgs args = new TimerArgs("test", TimerType.HOUR_INTERVAL, d.getTime(), 1, new PlayerTimerCallBack());
+        args.setLastTick(d.getTime());
+        t.startInterval(args);
         // 清除定时器
         assertEquals(t.getTimerNameMapToCfg().size(), 1);
         t.clearInterval("test");
