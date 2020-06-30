@@ -1,2 +1,3 @@
 /GameServer/.idea
 *.DS_Store
+/GameServer/target

@@ -10,6 +10,7 @@ import com.lan.game.timer.impl.Timer;
  * 玩家类
  */
 public class Player implements ITimerTarget, IActivityTarget {
+    String id;
     String name;
     private Timer timer;
 
@@ -41,6 +42,14 @@ public class Player implements ITimerTarget, IActivityTarget {
 
     public void setTimer(Timer timer) {
         this.timer = timer;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void tick(long nowTs) {
